@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Employee Details</title>
+ <style>
+body {
+   font-family: Arial, sans-serif;
+   background-color: #f4f4f9;
+   margin: 0;
+   padding: 0;
+   position: relative;
+}
+
+h1 {
+   text-align: center;
+   color: #333;
+   margin-top: 60px;
+   opacity: 0;
+   animation: fadeIn 1s ease-in-out forwards;
+}
+
+.logout-button {
+   position: absolute;
+   top: 20px;
+   right: 20px;
+   padding: 10px 20px;
+   background-color: #FF6F61;
+   color: #fff;
+   border: none;
+   border-radius: 5px;
+   font-size: 16px;
+   cursor: pointer;
+   text-decoration: none;
+   transition: background-color 0.3s ease, transform 0.3s ease;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+   opacity: 0;
+   animation: slideInRight 0.8s ease-in-out forwards;
+}
+
+.logout-button:hover {
+   background-color: #FF3B30;
+   transform: scale(1.05);
+}
+
+.logout-button:active {
+   background-color: #E63946;
+   transform: scale(1);
+}
+
+table {
+   width: 80%;
+   margin: 20px auto;
+   border-collapse: collapse;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+   background-color: #fff;
+   border-radius: 5px;
+   overflow: hidden;
+   transform: scale(0.98);
+   transition: transform 0.3s ease;
+   opacity: 0;
+   animation: fadeIn 1.2s ease-in-out forwards;
+}
+
+table:hover {
+   transform: scale(1);
+}
+
+th, td {
+   border: 1px solid #dddddd;
+   text-align: left;
+   padding: 12px;
+   transition: background-color 0.3s ease;
+}
+
+th {
+   background-color: #f88746;
+   color: #fff;
+   position: relative;
+   overflow: hidden;
+}
+
+td {
+   background-color: #f9f9f9;
+}
+
+tbody tr:nth-child(even) td {
+   background-color: #f2f2f2;
+}
+
+tbody tr:hover td {
+   background-color: #eaeaea;
+}
+
+th, td {
+   position: relative;
+   overflow: hidden;
+}
+
+th::after, td::after {
+   content: '';
+   position: absolute;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background-color: #007BFF;
+   transition: height 0.3s ease;
+   z-index: -1;
+   transform: scaleY(0);
+   transform-origin: bottom;
+}
+
+th:hover::after, td:hover::after {
+   height: 100%;
+   transform: scaleY(1);
+}
+
+.actions {
+   display: flex;
+   gap: 10px;
+}
+
+.actions a {
+   padding: 5px 10px;
+   border-radius: 3px;
+   background-color: #007BFF;
+   color: #fff;
+   font-weight: normal;
+   text-align: center;
+   text-decoration: none;
+   position: relative;
+   overflow: hidden;
+   transition: color 0.3s ease, background-color 0.3s ease;
+   z-index: 0;
+}
+
+.actions a::after {
+   content: '';
+   position: absolute;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background-color: #0056b3;
+   transition: height 0.3s ease;
+   z-index: -1;
+   transform: scaleY(0);
+   transform-origin: bottom;
+}
+
+.actions a:hover::after {
+   height: 100%;
+   transform: scaleY(1);
+}
+
+.actions a:hover {
+   color: #fff;
+}
+
+a[href="/add-employee"] {
+   display: inline-block;
+   margin: 20px auto;
+   padding: 10px 20px;
+   background-color: #007BFF;
+   color: #fff;
+   text-decoration: none;
+   border-radius: 5px;
+   text-align: center;
+   transition: background-color 0.3s ease, transform 0.3s ease;
+   opacity: 0;
+   animation: fadeIn 1.5s ease-in-out forwards;
+}
+
+a[href="/add-employee"]:hover {
+   background-color: #0056b3;
+   transform: scale(1.05);
+}
+
+a[href="/add-employee"]:active {
+   background-color: #00408d;
+   transform: scale(1);
+}
+
+@keyframes fadeIn {
+   0% {
+       opacity: 0;
+   }
+   100% {
+       opacity: 1;
+   }
+}
+
+@keyframes slideInRight {
+   0% {
+       opacity: 0;
+       transform: translateX(50px);
+   }
+   100% {
+       opacity: 1;
+       transform: translateX(0);
+   }
+}
+
+ </style>
+</head>
+<body>
+ <a href="/logout" class="logout-button">Logout</a>
+ <h1>EMPLOYEE SALARY DETAILS</h1>
+ <table>
+ <thead>
+ <tr>
+ <th>ID</th>
+ <th>Name</th>
+ <th>Salary</th>
+ <th>Actions</th>
+ </tr>
+ </thead>
+ <tbody>
+ <% employees.forEach(employee => { %>
+ <tr>
+ <td><%= employee.id %></td>
+ <td><%= employee.name %></td>
+ <td><%= employee.salary %></td>
+ <td class="actions">
+ <a href="/edit-employee/<%= employee.id %>">Edit</a>
+ <a href="/delete-employee/<%= employee.id %>">Delete</a>
+ </td>
+ </tr>
+ <% }) %>
+ </tbody>
+ </table>
+ <a href="/add-employee">Add New Employee</a>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Signup</title>
+    <link rel="stylesheet" href="styles1.css">
+</head>
+<body>
+    <div class="container">
+        <input type="radio" id="login" name="toggle" checked>
+        <input type="radio" id="signup" name="toggle">
+
+        <div class="header">
+            <label for="login" onclick="showLogin()">Login</label>
+            <label for="signup" onclick="showSignup()">Sign Up</label>
+        </div>
+
+        <div class="form-container">
+            <div class="form-panel" id="login-panel">
+                <form action="/login" method="POST">
+                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="password" name="password" placeholder="Password" required>
+                    <button type="submit">Login</button>
+                </form>
+            </div>
+            <div class="form-panel hidden" id="signup-panel">
+                <form action="/signup" method="POST" onsubmit="return validateSignupForm()">
+                    <input type="text" name="firstName" placeholder="First Name" required>
+                    <input type="text" name="lastName" placeholder="Last Name" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="password" id="signup-password" name="password" placeholder="Password" required>
+                    <small id="password-error" class="error-message"></small>
+                    <button type="submit">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const loginPanel = document.getElementById("login-panel");
+        const signupPanel = document.getElementById("signup-panel");
+        const passwordInput = document.getElementById("signup-password");
+        const passwordError = document.getElementById("password-error");
+
+        function showLogin() {
+            signupPanel.classList.add("hidden");
+            setTimeout(() => {
+                signupPanel.style.display = "none";
+                loginPanel.style.display = "flex";
+                setTimeout(() => {
+                    loginPanel.classList.remove("hidden");
+                }, 10);
+            }, 300);
+        }
+
+        function showSignup() {
+            loginPanel.classList.add("hidden");
+            setTimeout(() => {
+                loginPanel.style.display = "none";
+                signupPanel.style.display = "flex";
+                setTimeout(() => {
+                    signupPanel.classList.remove("hidden");
+                }, 10);
+            }, 300);
+        }
+
+        function validateSignupForm() {
+            const password = passwordInput.value;
+            const passwordRegex = /^[A-Z][A-Za-z\d@$!%*?&]{7,}$/;
+
+            if (!passwordRegex.test(password)) {
+                passwordError.textContent = "Password must be at least 8 characters long and start with an uppercase letter.";
+                return false; // Prevent form submission
+            }
+            passwordError.textContent = ""; // Clear error message if validation passes
+            return true; // Allow form submission
+        }
+    </script>
+</body>
+</html>
