@@ -1,0 +1,138 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: skyblue;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Keyframe for fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-top: 60px; /* Increased margin to make space for the button */
+  animation: slideDown 0.8s ease-in-out;
+}
+
+/* Keyframe for slide-down animation */
+@keyframes slideDown {
+  from { transform: translateY(-50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.logout-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: #FF6F61;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 1s ease-in-out 0.5s; /* Delay for the button fade-in */
+  animation-fill-mode: forwards;
+}
+
+.logout-button:hover {
+  background-color: #E63946;
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.logout-button:active {
+  background-color: #8a8282;
+  transform: scale(1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.container {
+  width: 80%;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 20px; /* Increased the border-radius */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  animation: popIn 1s ease-in-out;
+}
+
+/* Keyframe for pop-in animation */
+@keyframes popIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  animation: fadeIn 1.2s ease-in-out;
+}
+
+label {
+  font-size: 16px;
+  color: #333;
+  animation: fadeIn 1.4s ease-in-out;
+}
+
+input[type="text"] {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus {
+  border-color: #007BFF;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  animation: popIn 1s ease-in-out 0.5s;
+}
+
+button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+button:active {
+  background-color: #00408d;
+  transform: scale(1);
+}
+
+a {
+  text-decoration: none;
+  color: #007BFF;
+  font-weight: bold;
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  transition: color 0.3s ease;
+  animation: fadeIn 1.6s ease-in-out;
+}
+
+a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
